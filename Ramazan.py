@@ -3,8 +3,9 @@ from telebot import types
 import sqlite3
 import random
 import time
+import os
 
-TOKEN = "8400511241:AAFwWPyBDg8us2oy7CM0miKcP4li0iM2TdU"
+TOKEN = os.getenv("BOT_TOKEN")
 bot = telebot.TeleBot(TOKEN)
 
 # ================== БАЗА ДАННЫХ ==================
@@ -272,5 +273,8 @@ def callback(call):
         bot.edit_message_text("Главное меню", call.message.chat.id, call.message.message_id, reply_markup=main_menu())
 
 # ================== RUN ==================
-bot.polling(none_stop=True)
+if __name__ == "__main__":
+    bot.polling(none_stop=True)
+
+
 
